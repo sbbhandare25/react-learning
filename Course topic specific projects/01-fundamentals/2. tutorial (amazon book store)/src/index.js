@@ -1,28 +1,24 @@
 import React from 'react'
 import ReactDom from 'react-dom/client'
+import { bookList } from './books'
+import Book from './Book'
 // MUST PROVIDE EXTENSION FOR CSS WHILE IMPORTING.
 import './index.css'
 
 const BookList = () => {
+  const findBook = (id) => {
+    const book = bookList.find((book) => book.id === id)
+    console.log(book)
+  }
   return (
-    <section className='booklist'>
-      <Book />
-      <Book />
-      <Book />
-      <Book />
-    </section>
-  )
-}
-
-const Book = () => {
-  return (
-    <article className='book'>
-      {/* This is public image which we can use directly from images folder.
-      This can accessed publicly using url:	http://localhost:3000/images/good-energy.jpg */}
-      <img src='./images/good-energy.jpg' alt='Good Energy' />
-      <h2>Good Energy</h2>
-      <h4>Casey Means</h4>
-    </article>
+    <>
+      <h1>amazon best sellers</h1>
+      <section className='booklist'>
+        {bookList.map((book, index) => (
+          <Book {...book} key={book.id} getBook={findBook} number={index} />
+        ))}
+      </section>
+    </>
   )
 }
 
