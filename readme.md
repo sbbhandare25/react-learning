@@ -8,3 +8,4 @@ This repo contains notes and projects related to react for learning react.
 2. [Advanced Concepts](./All%20Notes//02-advanced-concepts.md)
 3. [Axios](./All%20Notes//03-axios-tutorial.md)
 4. [React Query](./All%20Notes//04-react-query.md)
+5. [React Router](./All%20Notes//05-react-router.md)
