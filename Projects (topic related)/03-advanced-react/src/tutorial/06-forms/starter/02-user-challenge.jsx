@@ -1,23 +1,20 @@
 import { useState } from 'react'
-import { data } from '../../../data'
+import { data as info } from '../../../data'
 
 const UserChallenge = () => {
   const [name, setName] = useState('')
-  const [users, setUsers] = useState(data)
+  const [data, setData] = useState(info)
 
   const handleSubmit = (e) => {
     e.preventDefault()
     if (!name) return
-    const fakeId = Date.now()
-    const newUser = { id: fakeId, name }
-    const updatedUsers = [...users, newUser]
-    setUsers(updatedUsers)
+    setData([...data, { id: Date.now(), name }])
     setName('')
   }
 
-  const removeUser = (id) => {
-    const updatedUsers = users.filter((person) => person.id !== id)
-    setUsers(updatedUsers)
+  const removePerson = (id) => {
+    const newData = data.filter((person) => person.id !== id)
+    setData(newData)
   }
 
   return (
@@ -41,15 +38,21 @@ const UserChallenge = () => {
           submit
         </button>
       </form>
-      <h2>users</h2>
-      {users.map((user) => (
-        <div key={user.id}>
-          <h4>{user.name}</h4>
-          <button onClick={() => removeUser(user.id)} className='btn'>
-            remove
-          </button>
-        </div>
-      ))}
+      {/* render users below */}
+      <div>
+        {data.map(({ id, name }) => (
+          <div key={id}>
+            {name}{' '}
+            <button
+              type='button'
+              className='btn'
+              onClick={() => removePerson(id)}
+            >
+              Remove
+            </button>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }

@@ -1,12 +1,14 @@
-import Item from './Person';
+import { memo } from 'react'
+import Item from './Person'
 
-const List = ({ people }) => {
+const List = ({ people, removePerson }) => {
+  console.log('List render')
   return (
     <div>
       {people.map((person) => {
-        return <Item key={person.id} {...person} />;
+        return <Item key={person.id} removePerson={removePerson} {...person} />
       })}
     </div>
-  );
-};
-export default List;
+  )
+}
+export default memo(List)

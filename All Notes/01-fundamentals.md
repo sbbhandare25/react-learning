@@ -636,9 +636,9 @@ npm run dev
 
 #### Vite Setup
 
-- need to use .jsx extension
-- index.html in the source instead of public
-- assets still in public
-- instead of index.js, need to use main.jsx
-- to spin up dev server - "npm run dev"
+- need to use `.jsx extension`
+- `public` folder for public files.
+- `src/assets` folder for local files.
+- Start file is `main.jsx`
+- to spin up dev server - `npm run dev`
 - rest the same - imports/exports, deployment, assets, etc...

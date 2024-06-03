@@ -1,40 +1,31 @@
-import { data } from '../../../data'
 import { useState } from 'react'
+import { data } from '../../../data'
 
 const UseStateArray = () => {
   const [people, setPeople] = useState(data)
 
-  const removeItem = (id) => {
-    const newPeople = people.filter((person) => id !== person.id)
+  const handleOnClick = (key) => {
+    const newPeople = people.filter((item) => item.id !== key)
+    console.log(newPeople)
     setPeople(newPeople)
   }
-
-  const clearAllItems = () => {
-    setPeople([])
-  }
-
   return (
     <div>
-      {people.map(({ id, name }) => (
-        <div key={id}>
-          <h4>{name}</h4>
-          <button
-            type='button'
-            onClick={() => {
-              removeItem(id)
-            }}
-          >
+      {people.map((item) => (
+        <div key={item.id}>
+          <h4>{item.name}</h4>
+          <button type='button' onClick={() => handleOnClick(item.id)}>
             Remove
           </button>
         </div>
       ))}
       <button
         type='button'
-        style={{ marginTop: '2rem' }}
         className='btn'
-        onClick={clearAllItems}
+        style={{ marginTop: '2rem' }}
+        onClick={() => setPeople([])}
       >
-        Clear items
+        Clear Items
       </button>
     </div>
   )

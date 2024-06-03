@@ -6,12 +6,9 @@ const MultipleInputs = () => {
     email: '',
     password: '',
   })
-
   const handleChange = (e) => {
-    // console.log(e.target.name, e.target.value)
     setUser({ ...user, [e.target.name]: e.target.value })
   }
-
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log(user)
@@ -30,8 +27,8 @@ const MultipleInputs = () => {
             type='text'
             className='form-input'
             id='name'
-            value={user.name}
             name='name'
+            value={user.name}
             onChange={handleChange}
           />
         </div>
@@ -44,8 +41,8 @@ const MultipleInputs = () => {
             type='email'
             className='form-input'
             id='email'
-            value={user.email}
             name='email'
+            value={user.email}
             onChange={handleChange}
           />
         </div>
@@ -58,8 +55,8 @@ const MultipleInputs = () => {
             type='password'
             className='form-input'
             id='password'
-            value={user.password}
             name='password'
+            value={user.password}
             onChange={handleChange}
           />
         </div>
